@@ -1,0 +1,26 @@
+DEBUT
+    r = 12000
+    s = 1250
+    e = 10
+    rh = 230
+    assertion1 = ((365 * 3) / (24 - (16 - 8))) * (rh) > r == (e * s < r)
+    assertion1Pt1 = ((365 * 3) / (24 - (16 - 8))) * (rh) > r # true
+    assertion1Pt2 = (e * s < r) # false
+    #assertion1 === (assertion1Pt1 == assertion1Pt2)
+    #assertion1 === (assertion1Pt1 == false)
+    #assertion1 === (true == false)
+    #PRINT assertion1
+    print(assertion1)
+    #ECRIRE assertion1
+    assertion2 = (365 * 3) / (4 - (12 - 8)) * (rh) > r == (e * s < r)
+    assertion2Pt1 = (365 * 3) / (4 - (12 - 8)) * (rh) > r # false ? (erreur zéro)
+    assertion2Pt2 = (e * s < r) # false
+    #assertion2 === (assertion2Pt1 == assertion2Pt2)
+    #assertion2 === (assertion2Pt1 == false)
+    #assertion 2 === (false == false)
+    #PRINT assertion2
+    print(assertion2)
+    #ECRIRE assertion2
+
+
+FIN
