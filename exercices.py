@@ -1,16 +1,19 @@
 def add(x,y):
+    #on calcule la somme de x + y
     return x+y
 
 def sub(x,y):
+    #on calcule la différence entre x et y
     return x-y
 
 def multiply(x,y):
+    #on calcule le produit de x par y
     return x*y
 
 def divide(x,y):
     #si y est différent de 0, alors on peut faire la division
     if y != 0 :
-        #on calcule donc la division de x par y
+        #on effectue donc la division de x par y
         return x/y
     #sinon, bah diviser par 0 c'est le mal donc non en fait
     else :
