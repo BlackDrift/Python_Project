@@ -18,9 +18,10 @@ def divide(x,y):
     #sinon, bah diviser par 0 c'est le mal donc non en fait
     else :
         #du coup on renvoie rien parce que voilà
-        return None
+        raise ZeroDivisionError ("Diviser par 0 c'est le mal !")
 
 def modulo(x,y):
+    #on calcule le reste de la division euclidienne de x par y
     return x%y
 
 def calculSalaireParSeconde(salaireHoraire, heureParJourOuvrable, jourOuvrable) :
