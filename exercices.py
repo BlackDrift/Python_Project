@@ -1,3 +1,4 @@
+from random import randint
 def add(x,y):
     #on calcule la somme de x + y
     return x+y
@@ -58,3 +59,55 @@ DEBUT
 
 FIN
 """
+
+def input():
+    #renvoie un caractère de type string au hasard
+    listeLettres = "abcdefghijklmnopqrstuvwxyz"
+    indiceLettre = randint(0, len(listeLettres)-1)
+    return listeLettres[indiceLettre]
+#Exercice :
+    #faire un mini-jeu qui affiche un message lorsque input renvoie le bon caractère
+    #le caractère doit être paramètrable
+
+def akiLettre(lettre,nombreEssais=0):
+    #on définit la lettre à deviner
+    lettreADeviner = input()
+    #on vérifie si les lettres sont différentes dans un premier temps
+    
+    while lettre != lettreADeviner :
+        #on relance la fonction (appel récursif) 
+        return akiLettre(lettre, nombreEssais + 1)
+    #sinon, c'est que les lettres sont identiques, donc on renvoie le message de victoire
+    return "Bien joué BG ! Tu as réussi ton coup en {nombreEssais} essais !"
+
+def afficherMessage(chaine):
+    return chaine
+
+listUser = {"Alexandre" : "motdepasse", "Michel" : "password", "Toto" : "12345", "JhonDoe" : "azerty"}
+
+def login(userName, password, listUser):
+    if userName not in listUser.keys() :
+        afficherMessage("Wrong username.")
+    else :
+        if password == listUser[userName]:
+            afficherMessage("You're connected !")
+        else :
+            afficherMessage("Wrong password.")
+
+
+tableau = [0, 10, 15, 5, 14, 7, 6 ,3, 4, 8, 4, 9, 5, 1, 7, 5, 2, 1, 8, 4, 4, 6, 8]
+
+#Exercice :
+    #faire une fonction qui concatène deux chaînes de caractères, les séparants par une virgule
+    #faire une fonction qui itere sur tous les index d'un tableau renvoyant une chaîne de caractères avec l'ensemble des occurences d'un chiffre
+
+def concatenation(chaine1, chaine2):
+    return chaine1 + ", " + chaine2
+
+def occurence(liste, caractere):
+    for el in liste :
+        if el == caractere :
+            tt
+
+def indexTableau():
+    ttt
