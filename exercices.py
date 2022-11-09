@@ -101,13 +101,64 @@ tableau = [0, 10, 15, 5, 14, 7, 6 ,3, 4, 8, 4, 9, 5, 1, 7, 5, 2, 1, 8, 4, 4, 6, 
     #faire une fonction qui concatène deux chaînes de caractères, les séparants par une virgule
     #faire une fonction qui itere sur tous les index d'un tableau renvoyant une chaîne de caractères avec l'ensemble des occurences d'un chiffre
 
+"""
+DEBUT
+DEFINIR concatene(chaineA, chaineB)
+
+FIN DEFINIR
+FIN
+"""
+#définir une fonction qui prend en paramètres : chaineA et chaineB deux chaînes de caractères
+#et qui retourne la concaténation de chaineA, une virgule et enfin chaineB
 def concatenation(chaine1, chaine2):
-    return chaine1 + ", " + chaine2
+    #Je m'assure que chaineA soit bien de type str
+    stringifiedChaineA = str(chaine1)
+    #Je m'assure que chaineB soit bien de type str
+    stringifiedChaineB = str(chaine2)
+    return stringifiedChaineA + ", " + stringifiedChaineB
 
-def occurence(liste, caractere):
-    for el in liste :
-        if el == caractere :
-            tt
+#définir une fonction qui prend une liste tableau et une variable x quelconque
+def occurence(tableau, x):
+    #Initialiser i à 0
+    i=0
+    #définir chaineResultat en tant que string vide
+    chaineResultat=""
+    #Tant que i est inférieur à la longueur de tableau
+    """
+    while i < len(tableau) :
+    """
+    for el in tableau :
+        #alors si l'élément d'index i de tableau est égal à x
+        """
+        if tableau[i] == x:
+        """
+        if el == x :
+            #alors on assigne à chaineResultat le retour de concatenation(chaineResultat, str(i))
+            chaineResultat = concatenation(chaineResultat, str(i))
+        #On incrémente i de 1
+        i = i + 1  
+    return chaineResultat
 
-def indexTableau():
-    ttt
+def occurence(tableau, x):
+    #Initialiser i à 0
+    i=0
+    #définir chaineResultat en tant que string vide
+    chaineResultat = ""
+    #On détermine firstTurn à true
+    firstTurn = True
+    #Tant que i est inférieur à la longueur de tableau
+    while i < len(tableau) :
+        #alors si l'élément d'index i de tableau est égal à x
+        if tableau[i] == x:
+            #Si je suis au premier tour (Si firstTurn est true)
+            if firstTurn :
+                #Alors j'assigne str(i) a chaineResultat
+                chaineResultat = str(i)
+                #On passe firstTurn à false
+                firstTurn = False
+            #sinon on assigne à chaineResultat le retour de concatenation(chaineResultat, str(i))
+            else :
+                chaineResultat = concatenation(chaineResultat, str(i))
+        #On incrémente i de 1
+        i = i + 1  
+    return chaineResultat    
