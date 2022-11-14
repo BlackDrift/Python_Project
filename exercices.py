@@ -118,26 +118,26 @@ def concatenation(chaine1, chaine2):
     return stringifiedChaineA + ", " + stringifiedChaineB
 
 #définir une fonction qui prend une liste tableau et une variable x quelconque
-def occurence(tableau, x):
+"""def occurence(tableau, x):
     #Initialiser i à 0
     i=0
     #définir chaineResultat en tant que string vide
     chaineResultat=""
     #Tant que i est inférieur à la longueur de tableau
-    """
+    ""
     while i < len(tableau) :
-    """
+    ""
     for el in tableau :
         #alors si l'élément d'index i de tableau est égal à x
-        """
+        ""
         if tableau[i] == x:
-        """
+        ""
         if el == x :
             #alors on assigne à chaineResultat le retour de concatenation(chaineResultat, str(i))
             chaineResultat = concatenation(chaineResultat, str(i))
         #On incrémente i de 1
         i = i + 1  
-    return chaineResultat
+    return chaineResultat"""
 
 def occurence(tableau, x):
     #Initialiser i à 0
@@ -161,4 +161,26 @@ def occurence(tableau, x):
                 chaineResultat = concatenation(chaineResultat, str(i))
         #On incrémente i de 1
         i = i + 1  
-    return chaineResultat    
+    return chaineResultat 
+
+#on définit une fonction fibonacci qui prend en paramètre qte le nombre d'éléments que doit contenir la liste renvoyée
+def fibonacci(qte) :
+    #on crée une liste tableau vide
+    tableau = []
+    #on définit firstElt qui sera le premier élément de la liste (si nécessaire)
+    firstElt = 1
+    #pour i allant de 0 à qte
+    for i in range(qte) :
+        #si i est égal à 0 ou est égal à 1
+        if i == 0 or i == 1 :
+            #alors on ajoute en fin de liste la valeur de firstElt (car les deux premiers termes de la suite de fibonacci sont égaux à 1)
+            tableau.append(firstElt)
+        #sinon    
+        else :
+            #alors on ajoute en fin de tableau la somme des deux éléments précédents, i-2 et i-1
+            tableau.append(tableau[i-2]+tableau[i-1])
+    #on renvoie le tableau, résultat de la fonction        
+    return tableau
+
+print(fibonacci(1))
+print(fibonacci(12))

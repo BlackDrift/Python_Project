@@ -11,4 +11,7 @@ def pierreFeuilleCiseau():
         if choixAdversaire == cercleCombat[choixJoueur]:
             return "Win !"
         else :
-            return "Lost... !"        
+            return "Lost... !"
+
+
+print(pierreFeuilleCiseau())

@@ -11,7 +11,7 @@
     # On définit une variable choixAdversaire à laquelle on assigne la valeur de tableElements ayant pour index le résultat de la fonction random
     # Si choixJoueur et choixAdversaire sont égaux :
         #Alors
-        # On attend 2 secondes 
+        # On attend 2 secondes
         # On retourne "Égalité !"
     # Sinon :
         #Alors
