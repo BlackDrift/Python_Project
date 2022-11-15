@@ -6,7 +6,7 @@ class TicTacToe (object):
             self._iaMode = False
         else :
             self._iaMode = True
-        self._winningCombos = [[(0,0)(0,1)(0,2)][(0,0)(1,0)(2,0)][(0,0)(1,1)(2,2)][(1,0)(1,1)(1,2)][(2,0)(2,1)(2,2)][(0,1)(1,1)(2,1)][(0,2)(1,2)(2,2)][(0,2)(1,1)(2,0)]]
+        self._winningCombos = [[(0,0),(0,1),(0,2)],[(0,0),(1,0),(2,0)],[(0,0),(1,1),(2,2)],[(1,0),(1,1),(1,2)],[(2,0),(2,1),(2,2)],[(0,1),(1,1),(2,1)],[(0,2),(1,2),(2,2)],[(0,2),(1,1),(2,0)]]
         self._gamePlate=[]
 
     def affiche(self,content):
@@ -24,13 +24,26 @@ class TicTacToe (object):
             self._gamePlate.append([])
             for _ in range (3) :
                 self._gamePlate[i].append("▣")
-        self.affiche(self._gamePlate)
+        self.affiche(self._gamePlate) 
+        
+    
+    def win(self,pointOwner):
+        if pointOwner == "X" :
+            return "Player 1 Wins !"
+        else :
+            if self._iaMode :
+                return "AI wins !"
+            else :
+                return "Player 2 wins !"
+
+    def draw(self):
+        return "That's a draw !"    
 
     def playerTurn(self):
-        rowCoord=int(input("Please select a row number between 1 and 3 : ") -1)
-        assert self._rowCoord >= 0 and rowCoord <=2, "You're supposed to have chosen a number between 1 and 3..."
-        colCoord=int(input("Please select a row number between 1 and 3 : ") -1)
-        assert self._colCoord >= 0 and colCoord <=2, "You're supposed to have chosen a number between 1 and 3..."
+        rowCoord=int(input("Please select a row number between 1 and 3 : "))-1
+        assert rowCoord >= 0 and rowCoord <=2, "You're supposed to have chosen a number between 1 and 3..."
+        colCoord=int(input("Please select a column number between 1 and 3 : "))-1
+        assert colCoord >= 0 and colCoord <=2, "You're supposed to have chosen a number between 1 and 3..."
         return (rowCoord, colCoord)
 
     def botTurn(self) :
@@ -40,37 +53,48 @@ class TicTacToe (object):
 
     def ticTacToeGame(self):
         takenCoords=[]
+        continuing=True
         if self._iaMode :
-            self._playerCoords=self.playerTurn()
-            if self._playerCoords in self._takenCoords:
-                print("You are supposed to pick free coords, not taken ones... do it again")
+            while continuing :
+                  
                 self._playerCoords=self.playerTurn()
-            else :
-                self._takenCoords.append(self._playerCoords)
-            self._gamePlate.insert(self._playerCoords,"X")    
-            self._botCoords=self.botTurn()
-            if self._botCoords in takenCoords :
+                if self._playerCoords in takenCoords:
+                    print("You are supposed to pick free coords, not taken ones... do it again")
+                    self._playerCoords=self.playerTurn()
+                else :
+                    takenCoords.append(self._playerCoords)
+                
+                self._gamePlate[self._playerCoords[0]].insert(self._playerCoords[1],"X")    
+                
                 self._botCoords=self.botTurn()
-            else :
-                self._takenCoords.append(self._botCoords)
-            self._gamePlate.insert(self._botCoords,"O")
-            if len(takenCoords) >=6 :
-                for i in range(len(self._takenCoords)):
-                    savingItem = self._takenCoords[i]
-                    pointOwner = self._gamePlate[savingItem[0]][savingItem[1]]
-                    listTaker = []
-                    pointsAligned = 1
-                    for j in range (len(self._winningCombos)) :
-                        if savingItem in self._winningCombos[j]:
-                            listTaker = self._winningCombos[j]
-                        for k in range (1,len(takenCoords)-1):
-                            if takenCoords[k] in listTaker :
-                                pointsAligned += 1
-                                if pointsAligned == 3 :
-                                    self.win(pointOwner)
-            assert len(takenCoords) <= 9, "An internal error occured..."
-            if len(takenCoords) == 9 and pointsAligned != 3 :
-                self.draw()                        
+                
+                if self._botCoords in takenCoords :
+                    self._botCoords=self.botTurn()
+                else :
+                    takenCoords.append(self._botCoords)
+
+                self._gamePlate[self._botCoords[0]].insert(self._botCoords[1],"O")
+                print(takenCoords)
+                self.affiche(self._gamePlate)
+                if len(takenCoords) >=5 :
+                    for i in range(len(takenCoords)):
+                        savingItem = takenCoords[i]
+                        pointOwner = self._gamePlate[savingItem[0]][savingItem[1]]
+                        listTaker = []
+                        pointsAligned = 1
+                        for j in range (len(self._winningCombos)) :
+                            if savingItem in self._winningCombos[j]:
+                                listTaker = self._winningCombos[j]
+                            for k in range (1,len(takenCoords)-1):
+                                if takenCoords[k] in listTaker :
+                                    pointsAligned += 1
+                                    if pointsAligned == 3 :
+                                        self.win(pointOwner)
+                                        continuing=False
+                assert len(takenCoords) <= 9, "An internal error occured..."
+                if len(takenCoords) == 9 and pointsAligned != 3 :
+                    self.draw()
+                    continuing=False                        
             
 
 
@@ -78,5 +102,6 @@ class TicTacToe (object):
 
 
 
-game=TicTacToe(True)
+game=TicTacToe()
 game.ticTacToeStart()
+game.ticTacToeGame()
