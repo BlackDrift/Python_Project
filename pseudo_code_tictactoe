@@ -1,0 +1,22 @@
+#DEBUT
+#On importe la bibiliothèque random
+#Création de la class TicTacToe de type object  
+    #surcharge de la méthode constructeur __init__
+        #s'il y a un second joueur
+            #Pas de présence d'une IA
+        #sinon, il n'y a qu'un seul joueur
+            #on indique la présence d'une IA
+            #((((self._winningCombos = [[(0,0),(0,1),(0,2)],[(0,0),(1,0),(2,0)],[(0,0),(1,1),(2,2)],[(1,0),(1,1),(1,2)],[(2,0),(2,1),(2,2)],[(0,1),(1,1),(2,1)],[(0,2),(1,2),(2,2)],[(0,2),(1,1),(2,0)]]   #Les combos gagnants))))
+            #Initialisation du gamePlate
+            #Initialisation du pointOwner pour le premier joueur
+            
+    #On définit la foncion affiche qui achicheras le tableau du jeu
+    
+
+    #On définit la fonction  ticTacToeStart qui créera le tableau
+
+
+
+                #caractère montrant la case 
+
+
