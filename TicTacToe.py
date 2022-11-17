@@ -146,6 +146,9 @@ class TicTacToe (object):  #création de la class TicTacToe de type object
                 if self.filledGamePlate() :                                  
                     continuing = False
                     self.draw()
+                    break
+                
+                break
         else :
             while continuing :
             
@@ -160,6 +163,16 @@ class TicTacToe (object):  #création de la class TicTacToe de type object
                 self._gamePlate[self._firstPlayerCoords[0]].pop(self._firstPlayerCoords[1]+1)
                 self.affiche(self._gamePlate)
                 
+                if self.playerWin(self._pointOwner) :
+                    continuing = False
+                    self.win(self._pointOwner)
+                    break
+                
+                if self.filledGamePlate() :                                  
+                    continuing = False
+                    self.draw()
+                    break
+
                 self._pointOwner=self.swapTurn(self._pointOwner)
 
                 self._secondPlayerCoords=self.playerTurn()
@@ -173,7 +186,7 @@ class TicTacToe (object):  #création de la class TicTacToe de type object
                 self._gamePlate[self._secondPlayerCoords[0]].pop(self._secondPlayerCoords[1]+1)
                 self.affiche(self._gamePlate)
 
-                self._pointOwner = self.swapTurn(self._pointOwner)
+                
                 
                 print(self._gamePlate)
                 if self.playerWin(self._pointOwner) :
@@ -181,10 +194,14 @@ class TicTacToe (object):  #création de la class TicTacToe de type object
                     self.win(self._pointOwner)
                     break
                 
-                assert len(takenCoords) <= 9, "An internal error occured..."
                 if self.filledGamePlate() :                                  
                     continuing = False
                     self.draw()
+                    break
+
+                self._pointOwner = self.swapTurn(self._pointOwner)
+                
+                
 
 
 
@@ -193,6 +210,6 @@ class TicTacToe (object):  #création de la class TicTacToe de type object
 
 
 
-game=TicTacToe(True)
+game=TicTacToe()
 game.ticTacToeStart()
 game.ticTacToeGame()
